@@ -1,0 +1,326 @@
+<!--
+Aanchal Tyagi - Premium One-Page Clinic Website (Light Theme, Spacious UI)
+Single-file HTML + CSS + small JS for animations & interactions.
+Customize: Replace placeholder image, update WhatsApp number, email, clinic address.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dr. Aanchal Tyagi — Homeopathy for Skin Health</title>
+  <meta name="description" content="Online homeopathy consultations for acne, eczema, pigmentation, psoriasis and more. Consult Dr. Aanchal Tyagi - experienced homeopathic dermatologist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f7f9fb; /* light neutral */
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #6c5ce7; /* purple */
+      --accent-2: #00bcd4; /* teal */
+      --soft: rgba(99,102,241,0.08);
+      --radius: 20px;
+      --glass: rgba(255,255,255,0.7);
+      --shadow: 0 10px 30px rgba(15,23,42,0.06);
+      --maxwidth: 1400px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:'Work Sans', system-ui, -apple-system, 'Segoe UI', Roboto;
+      background:linear-gradient(180deg,#fbfdff 0%, #f3f7fb 100%);
+      color:#0f1724; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    .wrap{max-width:var(--maxwidth);margin:0 auto;padding:44px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:8px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo-mark{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-weight:800;font-family:'Playfair Display';font-size:20px;box-shadow:var(--shadow)}
+    .brand-name{font-weight:700;font-size:18px}
+    .brand-sub{font-size:13px;color:var(--muted)}
+
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .nav-cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:10px 16px;border-radius:12px;box-shadow:0 8px 24px rgba(108,92,231,0.12)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 480px;gap:36px;align-items:center;padding:36px 0}
+    .hero-left h1{font-family:'Playfair Display';font-size:44px;margin:0 0 14px;line-height:1.02}
+    .hero-sub{color:var(--muted);font-size:16px;margin-bottom:20px}
+    .kpis{display:flex;gap:10px;margin-top:18px}
+    .kpi{background:var(--card);padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);min-width:120px;text-align:center}
+    .kpi strong{display:block;font-size:18px}
+
+    .hero-cta{display:flex;gap:12px;margin-top:22px}
+    .btn{padding:14px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
+    .btn-outline{background:transparent;border:1px solid rgba(15,23,36,0.06);color:var(--accent)}
+
+    /* Right card */
+    .right-card{background:var(--card);padding:28px;border-radius:20px;box-shadow:var(--shadow)}
+    .avatar{width:160px;height:160px;border-radius:16px;overflow:hidden;margin:0 auto 12px;box-shadow:0 8px 30px rgba(16,24,40,0.06)}
+    .doctor-name{font-weight:800;text-align:center;font-size:20px}
+    .doctor-role{text-align:center;color:var(--muted);margin-top:6px}
+    .price{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px}
+
+    /* Sections */
+    section{margin-top:36px}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:12px}
+    .section-title h2{margin:0;font-size:22px}
+    .section-desc{color:var(--muted);margin-top:8px}
+
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:18px}
+    .service{background:linear-gradient(180deg, #fff, #fbfcff);padding:22px;border-radius:16px;box-shadow:var(--shadow);transition:transform .35s, box-shadow .35s}
+    .service:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(15,23,36,0.08)}
+
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
+    .feature{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);text-align:center}
+
+    /* Gallery / before after */
+    .gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .image-card{border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);min-height:220px;display:grid;align-items:center;justify-items:center}
+
+    /* Testimonials */
+    .testimonials{display:flex;gap:16px;overflow:auto;padding:12px 0;margin-top:18px}
+    .t{min-width:320px;background:linear-gradient(90deg,#fff,#fbfdff);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:20px;margin-top:18px}
+    form{display:flex;flex-direction:column;gap:12px;background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow)}
+    input,textarea,select{padding:12px;border-radius:8px;border:1px solid #eef2f7;background:transparent}
+
+    footer{margin-top:42px;padding:28px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* subtle animations */
+    .pulse{animation:pulse 3s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+
+    /* responsive */
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:680px){
+      .services{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
+      nav{display:none}
+      .logo-mark{width:52px;height:52px}
+    }
+
+    /* reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .75s ease, transform .75s cubic-bezier(.2,.9,.25,1)}
+    .in-view{opacity:1;transform:none}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo-mark">AT</div>
+        <div>
+          <div class="brand-name">Dr. Aanchal Tyagi</div>
+          <div class="brand-sub">Homeopathy • Skin Specialist — Online Consults</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact" class="nav-cta">Book Consultation</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="background:var(--soft);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--accent)">Online</div>
+            <div style="color:var(--muted);font-size:14px">Confidential video & chat consultations</div>
+          </div>
+
+          <h1 class="reveal">Glow again — Healthy skin with gentle, scientific homeopathy</h1>
+          <p class="hero-sub reveal">Specialized care for acne, pigmentation, eczema, psoriasis and sensitive skin. Personalized treatment plans with follow-ups and progress tracking.</p>
+
+          <div class="kpis reveal">
+            <div class="kpi"><strong>15k+</strong><div class="small" style="color:var(--muted)">Consultations</div></div>
+            <div class="kpi"><strong>10+ yrs</strong><div class="small" style="color:var(--muted)">Experience</div></div>
+            <div class="kpi"><strong>90%+</strong><div class="small" style="color:var(--muted)">Satisfaction</div></div>
+          </div>
+
+          <div class="hero-cta reveal">
+            <button class="btn btn-primary" onclick="openWhatsApp()">Book on WhatsApp</button>
+            <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Free First Advice</button>
+          </div>
+
+          <div class="reveal" style="margin-top:22px;display:flex;gap:12px;align-items:center">
+            <div style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:8px 12px;border-radius:10px;font-weight:700">Online ₹499</div>
+            <div style="color:var(--muted)">30-min consult + personalized plan + follow-up</div>
+          </div>
+        </div>
+
+        <aside class="right-card reveal">
+          <div class="avatar">
+            <!-- Replace with real image -->
+            <img src="1.png" alt="Dr Aanchal Tyagi">
+          </div>
+          <div class="doctor-name">Dr. Aanchal Tyagi</div>
+          <div class="doctor-role">MD (Hom.) • Dermatology & Skin Specialist</div>
+          <div class="price">
+            <div style="text-align:center">
+              <div style="font-weight:800;font-size:18px">Online Consultation</div>
+              <div class="small" style="color:var(--muted)">₹499 — 30 minutes</div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:10px">
+            <button class="btn btn-primary" style="flex:1" onclick="openWhatsApp()">Message on WhatsApp</button>
+            <button class="btn btn-outline" style="flex:1" onclick="location.href='#contact'">Request Callback</button>
+          </div>
+        </aside>
+      </section>
+
+      <section id="services" class="reveal">
+        <div class="section-title">
+          <h2>Services</h2>
+          <div class="small" style="color:var(--muted)">Comprehensive, evidence-informed homeopathy</div>
+        </div>
+
+        <p class="section-desc">We treat common and chronic skin conditions with a focus on root causes and long-term skin health.</p>
+
+        <div class="services">
+          <div class="service">
+            <h3>Acne & Post-acne Scarring</h3>
+            <p class="small" style="color:var(--muted)">Individualized plans to reduce active inflammation and improve skin texture.</p>
+          </div>
+          <div class="service">
+            <h3>Pigmentation & Melasma</h3>
+            <p class="small" style="color:var(--muted)">Hormonal and sun-related pigmentation managed safely with long-term strategies.</p>
+          </div>
+          <div class="service">
+            <h3>Eczema & Psoriasis</h3>
+            <p class="small" style="color:var(--muted)">Gentle control of flares and maintenance plans to reduce recurrence.</p>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="feature">Telemedicine & Secure Consults</div>
+          <div class="feature">Personalized Remedy Plans</div>
+          <div class="feature">Progress Tracking</div>
+          <div class="feature">WhatsApp Follow-ups</div>
+        </div>
+      </section>
+
+      <!-- <section id="gallery" class="reveal">
+        <div class="section-title">
+          <h2>Before & After / Case Studies</h2>
+          <div class="small" style="color:var(--muted)">Real patient journeys (anonymized) showing progress over time</div>
+        </div>
+        <div class="gallery">
+          <div class="image-card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" style="width:100%;height:100%;object-fit:cover" alt="before-after"></div>
+          <div class="image-card"><img src="https://images.unsplash.com/photo-1541420779732-9b4f2b5c1a3e?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" style="width:100%;height:100%;object-fit:cover" alt="case study"></div>
+        </div>
+      </section> -->
+
+      <section id="testimonials" class="reveal">
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <div class="small" style="color:var(--muted)">Stories from patients who saw real improvement</div>
+        </div>
+        <div class="testimonials" aria-hidden>
+          <div class="t"><strong>Riya • 26</strong><p class="small" style="color:var(--muted)">"Acne reduced within weeks. The plan was simple and follow-ups were helpful."</p></div>
+          <div class="t"><strong>Neha • 34</strong><p class="small" style="color:var(--muted)">"Pigmentation improved steadily. Doctor explained everything in the consult."</p></div>
+          <div class="t"><strong>Aman • 29</strong><p class="small" style="color:var(--muted)">"No side effects and very supportive follow-ups via WhatsApp."</p></div>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal">
+        <div class="section-title">
+          <h2>Book a Consultation</h2>
+          <div class="small" style="color:var(--muted)">Choose WhatsApp, Callback or Request an Appointment</div>
+        </div>
+
+        <div class="contact-grid">
+          <form onsubmit="handleForm(event)">
+            <div style="display:flex;gap:12px">
+              <input type="text" id="name" placeholder="Full name" required style="flex:1">
+              <input type="text" id="age" placeholder="Age, Gender (e.g., 28, Female)" required style="width:240px">
+            </div>
+            <select id="concern">
+              <option>Acne</option>
+              <option>Pigmentation</option>
+              <option>Eczema / Psoriasis</option>
+              <option>Other</option>
+            </select>
+            <input type="tel" id="phone" placeholder="WhatsApp / Phone (with country code)" required>
+            <textarea id="message" rows="4" placeholder="Briefly describe your skin concern (optional)"></textarea>
+            <div style="display:flex;gap:10px">
+              <button class="btn btn-primary" type="submit">Request Callback</button>
+              <button type="button" class="btn btn-outline" onclick="openWhatsApp()">Message on WhatsApp</button>
+            </div>
+
+            <div style="margin-top:12px;color:var(--muted);font-size:13px">By submitting you agree to our privacy policy. Consults are confidential.</div>
+          </form>
+
+          <aside style="background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow)">
+            <h3 style="margin-top:0">Clinic & Contact</h3>
+            <p class="small" style="color:var(--muted)">Dr. Aanchal Tyagi • Homeopathic Dermatology</p>
+            <p style="margin-top:10px"><strong>Email:</strong> info@aanchalclinic.com</p>
+            <p style="margin-top:6px"><strong>WhatsApp:</strong> +91 99531 54257</p>
+            <p style="margin-top:6px"><strong>Based in:</strong> Delhi • Online Consults</p>
+
+            <div style="margin-top:18px">
+              <div style="font-weight:700">What to expect</div>
+              <ul style="color:var(--muted)">
+                <li>30-min online consult</li>
+                <li>Personalized remedy & lifestyle plan</li>
+                <li>Follow-up support on WhatsApp</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <strong>Dr. Aanchal Tyagi</strong> — Homeopathy for Skin Health</div>
+      <div class="small" style="color:var(--muted)">Designed with care • Built for online consultations</div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); });
+    },{threshold:0.12});
+    reveals.forEach(r=>obs.observe(r));
+
+    function openWhatsApp(){
+      const number = '+919953154257';
+      const text = encodeURIComponent('Hi Dr. Aanchal, I would like to book an online consultation regarding my skin.');
+      window.open('https://wa.me/' + number.replace(/[^0-9]/g,'') + '?text=' + text,'_blank');
+    }
+
+    function handleForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const concern = document.getElementById('concern').value;
+      const message = document.getElementById('message').value;
+      const newline = String.fromCharCode(10);
+      const text = encodeURIComponent('Hello Dr. Aanchal,' + newline + 'Name: ' + name + newline + 'Phone: ' + phone + newline + 'Concern: ' + concern + newline + 'Message: ' + message);
+      const wa = '+919876543210';
+      window.open('https://wa.me/' + wa.replace(/[^0-9]/g,'') + '?text=' + text,'_blank');
+    }
+  </script>
+</body>
+</html>
