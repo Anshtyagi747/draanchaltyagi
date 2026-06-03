@@ -1,325 +1,888 @@
-<!--
-Aanchal Tyagi - Premium One-Page Clinic Website (Light Theme, Spacious UI)
-Single-file HTML + CSS + small JS for animations & interactions.
-Customize: Replace placeholder image, update WhatsApp number, email, clinic address.
--->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dr. Aanchal Tyagi — Homeopathy for Skin Health</title>
-  <meta name="description" content="Online homeopathy consultations for acne, eczema, pigmentation, psoriasis and more. Consult Dr. Aanchal Tyagi - experienced homeopathic dermatologist.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="The Anchor Point – World-Class Digital Marketing & Branding Agency. Futuristic SEO, Growth, and Creative Solutions.">
+  <meta name="theme-color" content="#0F172A">
+  <title>The Anchor Point | Futuristic Marketing Agency</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    :root{
-      --bg: #f7f9fb; /* light neutral */
-      --card: #ffffff;
-      --muted: #6b7280;
-      --accent: #6c5ce7; /* purple */
-      --accent-2: #00bcd4; /* teal */
-      --soft: rgba(99,102,241,0.08);
-      --radius: 20px;
-      --glass: rgba(255,255,255,0.7);
-      --shadow: 0 10px 30px rgba(15,23,42,0.06);
-      --maxwidth: 1400px;
+    /* ---------- GLOBAL RESET & VARIABLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;font-family:'Work Sans', system-ui, -apple-system, 'Segoe UI', Roboto;
-      background:linear-gradient(180deg,#fbfdff 0%, #f3f7fb 100%);
-      color:#0f1724; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
+    :root {
+      --primary: #0F172A;
+      --secondary: #1E293B;
+      --accent-blue: #3B82F6;
+      --accent-purple: #8B5CF6;
+      --highlight-cyan: #06B6D4;
+      --text-light: #F8FAFC;
+      --text-gray: #94A3B8;
+      --glass-bg: rgba(30, 41, 59, 0.4);
+      --border-glow: rgba(59, 130, 246, 0.3);
+      --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .wrap{max-width:var(--maxwidth);margin:0 auto;padding:44px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:8px 0}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo-mark{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-weight:800;font-family:'Playfair Display';font-size:20px;box-shadow:var(--shadow)}
-    .brand-name{font-weight:700;font-size:18px}
-    .brand-sub{font-size:13px;color:var(--muted)}
-
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600}
-    .nav-cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:10px 16px;border-radius:12px;box-shadow:0 8px 24px rgba(108,92,231,0.12)}
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 480px;gap:36px;align-items:center;padding:36px 0}
-    .hero-left h1{font-family:'Playfair Display';font-size:44px;margin:0 0 14px;line-height:1.02}
-    .hero-sub{color:var(--muted);font-size:16px;margin-bottom:20px}
-    .kpis{display:flex;gap:10px;margin-top:18px}
-    .kpi{background:var(--card);padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);min-width:120px;text-align:center}
-    .kpi strong{display:block;font-size:18px}
-
-    .hero-cta{display:flex;gap:12px;margin-top:22px}
-    .btn{padding:14px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
-    .btn-outline{background:transparent;border:1px solid rgba(15,23,36,0.06);color:var(--accent)}
-
-    /* Right card */
-    .right-card{background:var(--card);padding:28px;border-radius:20px;box-shadow:var(--shadow)}
-    .avatar{width:160px;height:160px;border-radius:16px;overflow:hidden;margin:0 auto 12px;box-shadow:0 8px 30px rgba(16,24,40,0.06)}
-    .doctor-name{font-weight:800;text-align:center;font-size:20px}
-    .doctor-role{text-align:center;color:var(--muted);margin-top:6px}
-    .price{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px}
-
-    /* Sections */
-    section{margin-top:36px}
-    .section-title{display:flex;align-items:end;justify-content:space-between;gap:12px}
-    .section-title h2{margin:0;font-size:22px}
-    .section-desc{color:var(--muted);margin-top:8px}
-
-    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:18px}
-    .service{background:linear-gradient(180deg, #fff, #fbfcff);padding:22px;border-radius:16px;box-shadow:var(--shadow);transition:transform .35s, box-shadow .35s}
-    .service:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(15,23,36,0.08)}
-
-    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
-    .feature{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);text-align:center}
-
-    /* Gallery / before after */
-    .gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-    .image-card{border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);min-height:220px;display:grid;align-items:center;justify-items:center}
-
-    /* Testimonials */
-    .testimonials{display:flex;gap:16px;overflow:auto;padding:12px 0;margin-top:18px}
-    .t{min-width:320px;background:linear-gradient(90deg,#fff,#fbfdff);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
-
-    /* Contact */
-    .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:20px;margin-top:18px}
-    form{display:flex;flex-direction:column;gap:12px;background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow)}
-    input,textarea,select{padding:12px;border-radius:8px;border:1px solid #eef2f7;background:transparent}
-
-    footer{margin-top:42px;padding:28px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
-
-    /* subtle animations */
-    .pulse{animation:pulse 3s infinite}
-    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
-
-    /* responsive */
-    @media (max-width:1100px){
-      .hero{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
-      .services{grid-template-columns:repeat(2,1fr)}
-      .features{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:680px){
-      .services{grid-template-columns:1fr}
-      .features{grid-template-columns:1fr}
-      nav{display:none}
-      .logo-mark{width:52px;height:52px}
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
-    /* reveal */
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .75s ease, transform .75s cubic-bezier(.2,.9,.25,1)}
-    .in-view{opacity:1;transform:none}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--primary);
+      color: var(--text-light);
+      line-height: 1.5;
+      overflow-x: hidden;
+      cursor: default;
+    }
 
+    /* custom cursor */
+    .cursor-follower {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--highlight-cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: 0.1s ease;
+      z-index: 9999;
+      opacity: 0;
+      backdrop-filter: blur(4px);
+    }
+
+    body:hover .cursor-follower {
+      opacity: 1;
+    }
+
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 0.8s ease;
+    }
+    .loader-glow {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--accent-blue), var(--accent-purple), var(--highlight-cyan));
+      animation: spin 1.2s linear infinite;
+      position: absolute;
+      filter: blur(8px);
+    }
+    .loader-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-blue), var(--highlight-cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      z-index: 2;
+      letter-spacing: 4px;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--highlight-cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    /* HEADER */
+    .main-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(59,130,246,0.2);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, #FFF, var(--highlight-cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo-accent { color: var(--accent-blue); background: none; -webkit-background-clip: unset; }
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-link {
+      color: var(--text-gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--highlight-cyan);
+      text-shadow: 0 0 6px rgba(6,182,212,0.4);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .bar {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(var(--text-gray) 1px, transparent 1px), linear-gradient(90deg, var(--text-gray) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .floating-shapes::before, .floating-shapes::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--accent-purple), transparent);
+      filter: blur(80px);
+      opacity: 0.2;
+      animation: float 20s infinite alternate;
+    }
+    @keyframes float { 0%{ transform: translate(0,0);} 100%{ transform: translate(50px, 50px);} }
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-badge {
+      background: rgba(59,130,246,0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      border-left: 2px solid var(--accent-blue);
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin: 1.5rem 0 1rem;
+    }
+    .stats-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .stat-item span:first-child { font-size: 2rem; font-weight: 800; color: var(--highlight-cyan);}
+    .btn-primary, .btn-outline {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+      color: white;
+      box-shadow: 0 0 12px rgba(59,130,246,0.4);
+    }
+    .btn-outline {
+      border: 1px solid var(--accent-blue);
+      color: var(--text-light);
+    }
+    .hero-buttons { display: flex; gap: 1rem; margin: 2rem 0;}
+
+    /* TRUSTED SLIDER */
+    .trusted { padding: 3rem 0; overflow: hidden; border-top: 1px solid rgba(148,163,184,0.2);}
+    .logo-slider {
+      display: flex;
+      animation: slide 20s linear infinite;
+      gap: 4rem;
+    }
+    .logo-slider img { height: 40px; filter: brightness(0) invert(1) opacity(0.7); transition: 0.3s;}
+    .logo-slider img:hover { filter: brightness(0) invert(1) opacity(1); transform: scale(1.05);}
+    @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* SERVICES GRID */
+    .services { padding: 6rem 0; background: radial-gradient(circle at 10% 20%, rgba(59,130,246,0.05), transparent);}
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 2rem;
+      border: 1px solid rgba(59,130,246,0.2);
+      transition: var(--transition-smooth);
+      text-align: center;
+    }
+    .service-card i { font-size: 2.5rem; background: linear-gradient(135deg, var(--accent-blue), var(--highlight-cyan)); -webkit-background-clip: text; background-clip: text; color: transparent;}
+    .service-card:hover { transform: translateY(-10px); border-color: var(--accent-purple); box-shadow: 0 20px 30px -15px rgba(0,0,0,0.5);}
+
+    /* ABOUT SPLIT */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-image img { width: 100%; border-radius: 32px; box-shadow: 0 20px 35px -10px black;}
+    .progress-bar { background: #2d3a5e; border-radius: 20px; margin: 1rem 0; height: 6px;}
+    .progress-fill { width: 0%; height: 6px; background: linear-gradient(90deg, var(--accent-blue), var(--highlight-cyan)); border-radius: 20px; transition: width 1.2s;}
+
+    /* PORTFOLIO MASONRY */
+    .portfolio-filters { text-align: center; margin-bottom: 2rem;}
+    .filter-btn { background: transparent; border: 1px solid var(--text-gray); padding: 0.5rem 1.8rem; margin: 0.3rem; border-radius: 40px; color: white; cursor: pointer;}
+    .filter-btn.active, .filter-btn:hover { background: var(--accent-blue); border-color: var(--accent-blue);}
+    .portfolio-masonry {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-auto-rows: 280px;
+      gap: 1.5rem;
+    }
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+    }
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s;}
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #0F172A, transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: 0.4s;
+    }
+    .portfolio-item:hover .overlay { opacity: 1;}
+    .portfolio-item:hover img { transform: scale(1.05);}
+
+    /* TEAM */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;}
+    .team-card { background: var(--secondary); border-radius: 32px; text-align: center; padding: 2rem; transition: all 0.3s;}
+    .team-card img { width: 120px; border-radius: 50%; margin-bottom: 1rem; border: 2px solid var(--accent-purple);}
+    .team-card:hover { transform: translateY(-8px); box-shadow: 0 18px 30px -10px black; border-bottom: 2px solid var(--highlight-cyan);}
+
+    /* PROCESS STEPS */
+    .process-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3rem;}
+    .step { background: rgba(30,41,59,0.6); backdrop-filter: blur(8px); border-radius: 28px; padding: 2rem; width: 220px; text-align: center;}
+    .step-num { font-size: 3rem; font-weight: 800; background: linear-gradient(145deg, var(--accent-blue), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; color: transparent;}
+
+    /* STATS DASHBOARD */
+    .dashboard-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;}
+    .stat-card { background: rgba(0,0,0,0.3); border-radius: 28px; text-align: center; padding: 2rem; flex: 1;}
+    .circle-chart canvas { width: 100px; height: 100px;}
+    .big-number .counter { font-size: 3rem; font-weight: 800; color: var(--highlight-cyan);}
+
+    /* TESTIMONIAL SLIDER */
+    .testimonial-slider { position: relative; overflow: hidden;}
+    .testimonial-track { display: flex; transition: transform 0.5s ease; gap: 2rem;}
+    .testimonial-card { min-width: 100%; background: rgba(30,41,59,0.5); border-radius: 32px; padding: 2rem; backdrop-filter: blur(12px);}
+    .slider-controls button { background: var(--secondary); border: none; color: white; padding: 0.5rem 1rem; margin: 1rem; border-radius: 40px; cursor: pointer;}
+
+    /* PRICING TOGGLE */
+    .toggle-switch { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 2rem;}
+    .switch { position: relative; display: inline-block; width: 60px; height: 30px;}
+    .switch input { opacity: 0; width: 0; height: 0;}
+    .slider { position: absolute; cursor: pointer; inset: 0; background-color: #334155; transition: 0.4s; border-radius: 34px;}
+    .slider:before { position: absolute; content: ""; height: 22px; width: 22px; left: 4px; bottom: 4px; background-color: white; transition: 0.4s; border-radius: 50%;}
+    input:checked + .slider { background-color: var(--accent-blue);}
+    input:checked + .slider:before { transform: translateX(30px);}
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;}
+    .pricing-card { background: var(--secondary); border-radius: 32px; padding: 2rem; transition: 0.3s; position: relative;}
+    .popular { border: 1px solid var(--highlight-cyan); transform: scale(1.02);}
+    .badge-pop { position: absolute; top: -12px; right: 20px; background: var(--accent-blue); border-radius: 40px; padding: 0.2rem 1rem; font-size: 0.8rem;}
+
+    /* BLOG */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;}
+    .blog-card { background: var(--secondary); border-radius: 28px; overflow: hidden;}
+    .blog-card img { width: 100%; height: 200px; object-fit: cover;}
+    .blog-card a { color: var(--highlight-cyan); text-decoration: none;}
+
+    /* FAQ */
+    .faq-item { background: rgba(30,41,59,0.5); margin: 1rem 0; border-radius: 20px; padding: 1rem; backdrop-filter: blur(5px);}
+    summary { font-weight: 600; cursor: pointer; padding: 0.5rem;}
+    details[open] summary { color: var(--accent-blue);}
+
+    /* CONTACT & FOOTER */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;}
+    .contact-form input, .contact-form textarea { width: 100%; background: var(--secondary); border: none; padding: 1rem; border-radius: 20px; margin: 0.5rem 0; color: white;}
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; border-top: 1px solid #2d3a5e; padding: 3rem 0;}
+    .copyright { text-align: center; padding: 1rem; border-top: 1px solid #1e293b;}
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .hero-container, .about-split, .contact-wrapper { grid-template-columns: 1fr; }
+      .nav-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background: var(--primary); width: 100%; text-align: center; padding: 2rem; transition: 0.3s;}
+      .nav-menu.active { left: 0;}
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 1.5rem;}
+      .stats-row { flex-direction: column;}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo-mark">AT</div>
-        <div>
-          <div class="brand-name">Dr. Aanchal Tyagi</div>
-          <div class="brand-sub">Homeopathy • Skin Specialist — Online Consults</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact" class="nav-cta">Book Consultation</a>
-      </nav>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-left">
-          <div style="display:flex;gap:12px;align-items:center">
-            <div style="background:var(--soft);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--accent)">Online</div>
-            <div style="color:var(--muted);font-size:14px">Confidential video & chat consultations</div>
-          </div>
-
-          <h1 class="reveal">Glow again — Healthy skin with gentle, scientific homeopathy</h1>
-          <p class="hero-sub reveal">Specialized care for acne, pigmentation, eczema, psoriasis and sensitive skin. Personalized treatment plans with follow-ups and progress tracking.</p>
-
-          <div class="kpis reveal">
-            <div class="kpi"><strong>15k+</strong><div class="small" style="color:var(--muted)">Consultations</div></div>
-            <div class="kpi"><strong>10+ yrs</strong><div class="small" style="color:var(--muted)">Experience</div></div>
-            <div class="kpi"><strong>90%+</strong><div class="small" style="color:var(--muted)">Satisfaction</div></div>
-          </div>
-
-          <div class="hero-cta reveal">
-            <button class="btn btn-primary" onclick="openWhatsApp()">Book on WhatsApp</button>
-            <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Free First Advice</button>
-          </div>
-
-          <div class="reveal" style="margin-top:22px;display:flex;gap:12px;align-items:center">
-            <div style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:8px 12px;border-radius:10px;font-weight:700">Online ₹499</div>
-            <div style="color:var(--muted)">30-min consult + personalized plan + follow-up</div>
-          </div>
-        </div>
-
-        <aside class="right-card reveal">
-          <div class="avatar">
-            <!-- Replace with real image -->
-            <img src="1.png" alt="Dr Aanchal Tyagi">
-          </div>
-          <div class="doctor-name">Dr. Aanchal Tyagi</div>
-          <div class="doctor-role">MD (Hom.) • Dermatology & Skin Specialist</div>
-          <div class="price">
-            <div style="text-align:center">
-              <div style="font-weight:800;font-size:18px">Online Consultation</div>
-              <div class="small" style="color:var(--muted)">₹499 — 30 minutes</div>
-            </div>
-          </div>
-
-          <div style="margin-top:16px;display:flex;gap:10px">
-            <button class="btn btn-primary" style="flex:1" onclick="openWhatsApp()">Message on WhatsApp</button>
-            <button class="btn btn-outline" style="flex:1" onclick="location.href='#contact'">Request Callback</button>
-          </div>
-        </aside>
-      </section>
-
-      <section id="services" class="reveal">
-        <div class="section-title">
-          <h2>Services</h2>
-          <div class="small" style="color:var(--muted)">Comprehensive, evidence-informed homeopathy</div>
-        </div>
-
-        <p class="section-desc">We treat common and chronic skin conditions with a focus on root causes and long-term skin health.</p>
-
-        <div class="services">
-          <div class="service">
-            <h3>Acne & Post-acne Scarring</h3>
-            <p class="small" style="color:var(--muted)">Individualized plans to reduce active inflammation and improve skin texture.</p>
-          </div>
-          <div class="service">
-            <h3>Pigmentation & Melasma</h3>
-            <p class="small" style="color:var(--muted)">Hormonal and sun-related pigmentation managed safely with long-term strategies.</p>
-          </div>
-          <div class="service">
-            <h3>Eczema & Psoriasis</h3>
-            <p class="small" style="color:var(--muted)">Gentle control of flares and maintenance plans to reduce recurrence.</p>
-          </div>
-        </div>
-
-        <div class="features">
-          <div class="feature">Telemedicine & Secure Consults</div>
-          <div class="feature">Personalized Remedy Plans</div>
-          <div class="feature">Progress Tracking</div>
-          <div class="feature">WhatsApp Follow-ups</div>
-        </div>
-      </section>
-
-      <!-- <section id="gallery" class="reveal">
-        <div class="section-title">
-          <h2>Before & After / Case Studies</h2>
-          <div class="small" style="color:var(--muted)">Real patient journeys (anonymized) showing progress over time</div>
-        </div>
-        <div class="gallery">
-          <div class="image-card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" style="width:100%;height:100%;object-fit:cover" alt="before-after"></div>
-          <div class="image-card"><img src="https://images.unsplash.com/photo-1541420779732-9b4f2b5c1a3e?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" style="width:100%;height:100%;object-fit:cover" alt="case study"></div>
-        </div>
-      </section> -->
-
-      <section id="testimonials" class="reveal">
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <div class="small" style="color:var(--muted)">Stories from patients who saw real improvement</div>
-        </div>
-        <div class="testimonials" aria-hidden>
-          <div class="t"><strong>Riya • 26</strong><p class="small" style="color:var(--muted)">"Acne reduced within weeks. The plan was simple and follow-ups were helpful."</p></div>
-          <div class="t"><strong>Neha • 34</strong><p class="small" style="color:var(--muted)">"Pigmentation improved steadily. Doctor explained everything in the consult."</p></div>
-          <div class="t"><strong>Aman • 29</strong><p class="small" style="color:var(--muted)">"No side effects and very supportive follow-ups via WhatsApp."</p></div>
-        </div>
-      </section>
-
-      <section id="contact" class="reveal">
-        <div class="section-title">
-          <h2>Book a Consultation</h2>
-          <div class="small" style="color:var(--muted)">Choose WhatsApp, Callback or Request an Appointment</div>
-        </div>
-
-        <div class="contact-grid">
-          <form onsubmit="handleForm(event)">
-            <div style="display:flex;gap:12px">
-              <input type="text" id="name" placeholder="Full name" required style="flex:1">
-              <input type="text" id="age" placeholder="Age, Gender (e.g., 28, Female)" required style="width:240px">
-            </div>
-            <select id="concern">
-              <option>Acne</option>
-              <option>Pigmentation</option>
-              <option>Eczema / Psoriasis</option>
-              <option>Other</option>
-            </select>
-            <input type="tel" id="phone" placeholder="WhatsApp / Phone (with country code)" required>
-            <textarea id="message" rows="4" placeholder="Briefly describe your skin concern (optional)"></textarea>
-            <div style="display:flex;gap:10px">
-              <button class="btn btn-primary" type="submit">Request Callback</button>
-              <button type="button" class="btn btn-outline" onclick="openWhatsApp()">Message on WhatsApp</button>
-            </div>
-
-            <div style="margin-top:12px;color:var(--muted);font-size:13px">By submitting you agree to our privacy policy. Consults are confidential.</div>
-          </form>
-
-          <aside style="background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow)">
-            <h3 style="margin-top:0">Clinic & Contact</h3>
-            <p class="small" style="color:var(--muted)">Dr. Aanchal Tyagi • Homeopathic Dermatology</p>
-            <p style="margin-top:10px"><strong>Email:</strong> info@aanchalclinic.com</p>
-            <p style="margin-top:6px"><strong>WhatsApp:</strong> +91 99531 54257</p>
-            <p style="margin-top:6px"><strong>Based in:</strong> Delhi • Online Consults</p>
-
-            <div style="margin-top:18px">
-              <div style="font-weight:700">What to expect</div>
-              <ul style="color:var(--muted)">
-                <li>30-min online consult</li>
-                <li>Personalized remedy & lifestyle plan</li>
-                <li>Follow-up support on WhatsApp</li>
-              </ul>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div>© <strong>Dr. Aanchal Tyagi</strong> — Homeopathy for Skin Health</div>
-      <div class="small" style="color:var(--muted)">Designed with care • Built for online consultations</div>
-    </footer>
+  <!-- PRELOADER / LOADING ANIMATION -->
+  <div id="preloader">
+    <div class="loader-glow"></div>
+    <div class="loader-text">ANCHOR POINT</div>
   </div>
 
-  <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); });
-    },{threshold:0.12});
-    reveals.forEach(r=>obs.observe(r));
+  <!-- CUSTOM CURSOR (PREMIUM EFFECT) -->
+  <div class="cursor-follower"></div>
 
-    function openWhatsApp(){
-      const number = '+919953154257';
-      const text = encodeURIComponent('Hi Dr. Aanchal, I would like to book an online consultation regarding my skin.');
-      window.open('https://wa.me/' + number.replace(/[^0-9]/g,'') + '?text=' + text,'_blank');
+  <!-- HEADER / NAVIGATION -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <a href="#" class="logo"><span class="logo-accent">THE</span> ANCHOR POINT</a>
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#portfolio" class="nav-link">Work</a></li>
+          <li><a href="#team" class="nav-link">Team</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-bg-grid"></div>
+      <div class="floating-shapes"></div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <span class="hero-badge">AI-POWERED MARKETING</span>
+          <h1 class="hero-title">Set Your <span class="gradient-text">Digital Anchor.</span> Conquer the Tide.</h1>
+          <p class="hero-desc">We blend creativity, data, and next-gen technology to scale brands into market leaders.</p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">Launch Campaign <i class="fas fa-arrow-right"></i></a>
+            <a href="#portfolio" class="btn-outline">View Case Studies</a>
+          </div>
+          <div class="stats-row">
+            <div class="stat-item"><span class="counter" data-target="15">0</span>+ <span>Leads Generated</span></div>
+            <div class="stat-item"><span class="counter" data-target="5">0</span>+ <span>Global clients</span></div>
+            <div class="stat-item"><span class="counter" data-target="98">0</span>% <span>Client Retention</span></div>
+          </div>
+        </div>
+        <div class="hero-illustration">
+          <div class="glass-card-graph">
+            <i class="fas fa-chart-line"></i>
+            <div class="graph-bars"></div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator"><span></span></div>
+    </section>
+
+    <!-- Trusted Companies (infinite slider) -->
+    <section class="trusted">
+      <div class="container">
+        <p class="trusted-text">TRUSTED BY INNOVATIVE BRANDS</p>
+        <div class="slider-container">
+          <div class="logo-slider">
+            <img src="1.png" alt="client"><img src="https://picsum.photos/id/1/150/60" alt="client"><img src="https://picsum.photos/id/26/150/60" alt="client"><img src="https://picsum.photos/id/13/150/60" alt="client"><img src="https://picsum.photos/id/29/150/60" alt="client"><img src="https://picsum.photos/id/39/150/60" alt="client"><img src="https://picsum.photos/id/55/150/60" alt="client">
+            <img src="https://picsum.photos/id/20/150/60" alt="client"><img src="1.png" alt="client"><img src="https://picsum.photos/id/26/150/60" alt="client"><img src="https://picsum.photos/id/13/150/60" alt="client"><img src="https://picsum.photos/id/29/150/60" alt="client"><img src="https://picsum.photos/id/39/150/60" alt="client">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section Grid -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">what we deliver</span>
+          <h2>Marketing <span class="gradient-text">Ecosystem</span></h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card"><i class="fas fa-chart-simple"></i><h3>SEO</h3><p>Data-driven rankings & organic growth</p></div>
+          <div class="service-card"><i class="fas fa-ad"></i><h3>PPC</h3><p>High-ROI paid campaigns</p></div>
+          <div class="service-card"><i class="fas fa-hashtag"></i><h3> (SMO)</h3><p>Viral strategies & brand love</p></div>
+          <div class="service-card"><i class="fas fa-pen-fancy"></i><h3>Content Mkt</h3><p>Storytelling that converts</p></div>
+          <div class="service-card"><i class="fas fa-palette"></i><h3>Branding</h3><p>Iconic identity design</p></div>
+          <div class="service-card"><i class="fas fa-code"></i><h3>Web Dev</h3><p>High-performance experiences</p></div>
+          <div class="service-card"><i class="fas fa-envelope-open-text"></i><h3>Email Mkt</h3><p>Automated nurture flows</p></div>
+          <div class="service-card"><i class="fas fa-robot"></i><h3>Marketing AI</h3><p>Intelligent automation</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Agency + timeline -->
+    <section id="about" class="about">
+      <div class="container about-split">
+        <div class="about-image"><img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800" alt="agency team creative"></div>
+        <div class="about-content">
+          <span class="subtitle">our legacy</span>
+          <h2>Blending <span class="gradient-text">Art & Algorithm</span></h2>
+          <p>Over a decade of shaping disruptive brands. We don't follow trends — we set them.</p>
+          <div class="progress-bars">
+            <div><span>SEO Dominance</span><div class="progress-bar"><div class="progress-fill" style="width:94%"></div></div></div>
+            <div><span>Creative ROI</span><div class="progress-bar"><div class="progress-fill" style="width:89%"></div></div></div>
+          </div>
+          <div class="exp-counter"><span class="counter" data-target="2">0</span>+ Years Excellence</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Masonry with filtering -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">case studies</span>
+          <h2>Digital <span class="gradient-text">Masterpieces</span></h2>
+        </div>
+        <div class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="seo">SEO</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+        </div>
+        <div class="portfolio-masonry">
+          <div class="portfolio-item branding"><img src="https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg?auto=compress&cs=tinysrgb&w=600" alt="project"><div class="overlay"><h4>Brand Identity</h4><p>View case study</p></div></div>
+          <div class="portfolio-item seo"><img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=600" alt="seo"><div class="overlay"><h4>SEO Growth 300%</h4><p>Organic domination</p></div></div>
+          <div class="portfolio-item web"><img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="web dev"><div class="overlay"><h4>Ecom Revolution</h4><p>Web UX/UI</p></div></div>
+          <div class="portfolio-item branding"><img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600" alt="brand"><div class="overlay"><h4>Rebranding Success</h4><p>Award winning</p></div></div>
+          <div class="portfolio-item seo"><img src="https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?auto=compress&cs=tinysrgb&w=600" alt="analytics"><div class="overlay"><h4>SEO Strategy</h4><p>+180% traffic</p></div></div>
+          <div class="portfolio-item web"><img src="https://images.pexels.com/photos/4439901/pexels-photo-4439901.jpeg?auto=compress&cs=tinysrgb&w=600" alt="web"><div class="overlay"><h4>SaaS Platform</h4><p>Conversion optimized</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+      <div class="container">
+        <div class="section-header"><span class="subtitle">architects</span><h2>Visionary <span class="gradient-text">Minds</span></h2></div>
+        <div class="team-grid">
+          <div class="team-card"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="team"><h3>Olivia Chen</h3><p>CEO & Creative Director</p><div class="social-icons"><i class="fab fa-linkedin-in"></i><i class="fab fa-twitter"></i></div></div>
+          <div class="team-card"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="team"><h3>Marcus Rivera</h3><p>Head of AI Strategy</p><div class="social-icons"><i class="fab fa-linkedin-in"></i><i class="fab fa-github"></i></div></div>
+          <div class="team-card"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="team"><h3>Sophia Laurent</h3><p>Growth Lead</p><div class="social-icons"><i class="fab fa-linkedin-in"></i><i class="fab fa-dribbble"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+      <div class="container"><h2>How we <span class="gradient-text">Ignite</span></h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">01</div><h4>Discovery</h4><p>Deep audit & data mapping</p></div>
+          <div class="step"><div class="step-num">02</div><h4>Strategy</h4><p>AI-powered roadmap</p></div>
+          <div class="step"><div class="step-num">03</div><h4>Execution</h4><p>Agile development</p></div>
+          <div class="step"><div class="step-num">04</div><h4>Scale</h4><p>Continuous optimization</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Dashboard (animated counters & progress circles) -->
+    <section class="stats-dashboard">
+      <div class="container dashboard-grid">
+        <div class="stat-card"><div class="circle-chart" data-percent="89"><canvas width="100" height="100"></canvas><div class="percent-value">0%</div></div><h4>Revenue Growth</h4></div>
+        <div class="stat-card"><div class="circle-chart" data-percent="97"><canvas width="100" height="100"></canvas><div class="percent-value">0%</div></div><h4>Leads Generated</h4></div>
+        <div class="stat-card"><div class="big-number"><span class="counter" data-target="15">0</span></div><h4>Projects Completed</h4></div>
+        <div class="stat-card"><div class="big-number"><span class="counter" data-target="98">0</span>%</div><h4>Client Retention</h4></div>
+      </div>
+    </section>
+
+    <!-- Testimonials Carousel (pure JS) -->
+    <section class="testimonials">
+      <div class="container"><h2>Client <span class="gradient-text">Voices</span></h2>
+        <div class="testimonial-slider">
+          <div class="testimonial-track">
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>Anchor Point tripled our organic revenue in 6 months. Absolute game-changer.</p><div class="client"><img src="https://randomuser.me/api/portraits/men/15.jpg"><div><h4>Alex Morgan</h4><span>CMO, VORTEX</span></div></div><div class="rating">★★★★★</div></div>
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>The most innovative agency we’ve worked with — futuristic vision.</p><div class="client"><img src="https://randomuser.me/api/portraits/women/90.jpg"><div><h4>Jane Lee</h4><span>Founder, Bloom</span></div></div><div class="rating">★★★★★</div></div>
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>Their AI-first approach gave us 4.5x ROAS. Highly recommend.</p><div class="client"><img src="https://randomuser.me/api/portraits/men/91.jpg"><div><h4>David Park</h4><span>Dir. Growth</span></div></div><div class="rating">★★★★★</div></div>
+          </div>
+          <div class="slider-controls"><button class="prev"><i class="fas fa-chevron-left"></i></button><button class="next"><i class="fas fa-chevron-right"></i></button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section with toggle -->
+    <section id="pricing" class="pricing">
+      <div class="container"><h2>DIGITAL MARKETING <span class="gradient-text">Plans</span></h2>
+        <div class="toggle-switch"><span>Monthly</span><label class="switch"><input type="checkbox" id="priceToggle"><span class="slider round"></span></label><span>Yearly (-20%)</span></div>
+        <div class="pricing-grid">
+          <div class="pricing-card"><h3>SETUP PLAN</h3><div class="price"><span class="currency">$</span><span class="amount">99</span><span class="period">/mo</span></div><ul><li>SEO Audit</li><li>Content Strategy</li><li>Analytics Dashboard</li></ul><a href="#" class="btn-outline">Get Started</a></div>
+          <div class="pricing-card popular"><div class="badge-pop">Most Popular</div><h3>15DAYS PLAN</h3><div class="price"><span class="currency">$</span><span class="amount">1499k</span><span class="period">/mo</span></div><ul><li>Full Funnel Marketing</li><li>PPC + Social Ads</li><li>Dedicated strategist</li></ul><a href="#" class="btn-primary">Scale Now</a></div>
+          <div class="pricing-card"><h3>MONTHLY PLAN</h3><div class="price"><span class="currency">$</span><span class="amount">2499k</span><span class="period">/mo</span></div><ul><li>AI Automation</li><li>Global Expansion</li><li>Custom Engineering</li></ul><a href="#" class="btn-outline">Contact Sales</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog">
+      <div class="container"><h2>Insights <span class="gradient-text">Lab</span></h2>
+        <div class="blog-grid">
+          <article class="blog-card"><img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="blog"><span class="tag">AI Trends</span><h4>Generative AI in Marketing</h4><a href="#">Read more →</a></article>
+          <article class="blog-card"><img src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600" alt="seo"><span class="tag">SEO</span><h4>Core Web Vitals 2025</h4><a href="#">Read more →</a></article>
+          <article class="blog-card"><img src="https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=600" alt="branding"><span class="tag">Branding</span><h4>Emotional Design Psychology</h4><a href="#">Read more →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq">
+      <div class="container"><h2>Curious <span class="gradient-text">Minds</span></h2>
+        <details class="faq-item"><summary>How does Anchor Point measure success?</summary><p>We track full-funnel KPIs: ROI, organic growth, conversion rates, and brand sentiment.</p></details>
+        <details class="faq-item"><summary>Do you offer custom AI solutions?</summary><p>Absolutely, we build proprietary marketing AI dashboards tailored to your industry.</p></details>
+        <details class="faq-item"><summary>What’s your typical onboarding time?</summary><p>Within 5 days we launch strategy and research phase.</p></details>
+      </div>
+    </section>
+
+    <!-- Contact Section with form + map embed -->
+    <section id="contact" class="contact">
+      <div class="container contact-wrapper">
+        <div class="contact-form"><h3>Let’s <span class="gradient-text">Connect</span></h3><form id="advancedForm"><input type="text" placeholder="Full Name" required><input type="email" placeholder="Email" required><textarea rows="4" placeholder="Project idea..."></textarea><button type="submit" class="btn-primary">Send Message <i class="fas fa-paper-plane"></i></button><p class="form-message"></p></form></div>
+        <div class="contact-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.966613785455!2d-74.0060!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDQyJzQ2LjAiTiA3NMKwMDMnMjEuMCJX!5e0!3m2!1sen!2sus!4v1647899999999!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid"><div><h3>THE ANCHOR POINT</h3><p>Futuristic marketing intelligence</p></div><div><h4>Explore</h4><ul><li><a href="https://www.instagram.com/_neha_sharmapvt?igsh=dHl6dG5yMjMzcnhs">instagram</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li></ul></div><div><h4>Newsletter</h4><div class="newsletter"><input type="email" placeholder="your@email.com"><button><i class="fas fa-arrow-right"></i></button></div></div></div>
+    <div class="copyright"><p>© 2025 The Anchor Point — The future of creative growth</p><div class="social-links"><i class="fab fa-instagram"></i><i class="fab fa-linkedin-in"></i><i class="fab fa-x-twitter"></i></div></div>
+  </footer>
+
+  <script>
+    // ========================
+    // JAVASCRIPT - THE ANCHOR POINT AGENCY
+    // All interactive features: Loader, Counters, Sliders, Filtering, Mobile Menu, Toggle, etc.
+    // ========================
+
+    // ---------- 1. PRELOADER DISMISS ----------
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      if(preloader) {
+        setTimeout(() => {
+          preloader.style.opacity = "0";
+          setTimeout(() => { preloader.style.display = "none"; }, 800);
+        }, 800);
+      }
+    });
+
+    // ---------- 2. CUSTOM CURSOR ----------
+    const cursor = document.querySelector(".cursor-follower");
+    if(cursor) {
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
     }
 
-    function handleForm(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const concern = document.getElementById('concern').value;
-      const message = document.getElementById('message').value;
-      const newline = String.fromCharCode(10);
-      const text = encodeURIComponent('Hello Dr. Aanchal,' + newline + 'Name: ' + name + newline + 'Phone: ' + phone + newline + 'Concern: ' + concern + newline + 'Message: ' + message);
-      const wa = '+919876543210';
-      window.open('https://wa.me/' + wa.replace(/[^0-9]/g,'') + '?text=' + text,'_blank');
+    // ---------- 3. MOBILE MENU TOGGLE (Hamburger) ----------
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    if(hamburger) {
+      hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
+    }
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+      });
+    });
+
+    // ---------- 4. ACTIVE NAVIGATION HIGHLIGHT ON SCROLL ----------
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 200;
+        if(scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if(link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // ---------- 5. SMOOTH SCROLLING FOR ALL ANCHOR LINKS ----------
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if(target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // ---------- 6. COUNTER ANIMATION (Intersection Observer) ----------
+    const counters = document.querySelectorAll(".counter");
+    const animateCounter = (counter) => {
+      const target = parseInt(counter.getAttribute("data-target"));
+      let count = 0;
+      const updateCounter = () => {
+        const increment = target / 70;
+        if(count < target) {
+          count += increment;
+          counter.innerText = Math.ceil(count);
+          setTimeout(updateCounter, 20);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCounter();
+    };
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // ---------- 7. CIRCLE PROGRESS CHARTS (Statistics Dashboard) ----------
+    document.querySelectorAll(".circle-chart").forEach(el => {
+      const percent = parseInt(el.getAttribute("data-percent"));
+      const canvas = el.querySelector("canvas");
+      if(canvas) {
+        const ctx = canvas.getContext("2d");
+        const size = 100;
+        canvas.width = size; canvas.height = size;
+        let startAngle = -90;
+        let currentPercent = 0;
+        const draw = () => {
+          ctx.clearRect(0,0,size,size);
+          ctx.beginPath();
+          ctx.arc(50,50,40,0,2*Math.PI);
+          ctx.strokeStyle = "#2d3a5e";
+          ctx.lineWidth = 8;
+          ctx.stroke();
+          ctx.beginPath();
+          const angle = (currentPercent / 100) * 360;
+          const rad = (startAngle + angle) * Math.PI/180;
+          ctx.arc(50,50,40, startAngle * Math.PI/180, rad);
+          ctx.strokeStyle = "#06B6D4";
+          ctx.stroke();
+          el.querySelector(".percent-value").innerText = currentPercent + "%";
+        };
+        let interval = setInterval(() => {
+          if(currentPercent >= percent) clearInterval(interval);
+          else { currentPercent++; draw(); }
+        }, 20);
+      }
+    });
+
+    // ---------- 8. TESTIMONIAL CAROUSEL (Slider) ----------
+    const track = document.querySelector(".testimonial-track");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+    if(track && prevBtn && nextBtn) {
+      let slides = Array.from(track.children);
+      let currentIndex = 0;
+      const updateSlide = () => {
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      };
+      window.addEventListener("resize", updateSlide);
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlide();
+      });
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlide();
+      });
+      updateSlide();
+    }
+
+    // ---------- 9. PORTFOLIO FILTERING (Masonry style filter) ----------
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const portfolioItems = document.querySelectorAll(".portfolio-item");
+    if(filterBtns.length) {
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const filterValue = btn.getAttribute("data-filter");
+          filterBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          portfolioItems.forEach(item => {
+            if(filterValue === "all" || item.classList.contains(filterValue)) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+    }
+
+    // ---------- 10. PRICING TOGGLE (Monthly / Yearly) ----------
+    const toggleCheckbox = document.getElementById("priceToggle");
+    if(toggleCheckbox) {
+      const prices = document.querySelectorAll(".pricing-card .amount");
+      const monthlyValues = ["2.9k", "5.8k", "9.5k"];
+      const yearlyValues = ["2.3k", "4.7k", "7.9k"];
+      toggleCheckbox.addEventListener("change", () => {
+        prices.forEach((priceEl, idx) => {
+          if(toggleCheckbox.checked) {
+            priceEl.innerText = yearlyValues[idx];
+          } else {
+            priceEl.innerText = monthlyValues[idx];
+          }
+        });
+      });
+    }
+
+    // ---------- 11. FAQ ACCORDION (already semantic, but adds smoothness) ----------
+    document.querySelectorAll(".faq-item").forEach(item => {
+      item.addEventListener("toggle", () => {
+        if(item.open) {
+          item.style.transition = "0.2s";
+        }
+      });
+    });
+
+    // ---------- 12. SCROLL REVEAL ANIMATION (fade-in & slide-up) ----------
+    const revealElements = document.querySelectorAll(".service-card, .team-card, .portfolio-item, .step, .blog-card");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0px)";
+        }
+      });
+    }, { threshold: 0.2 });
+    revealElements.forEach(el => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.transition = "all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1)";
+      revealObserver.observe(el);
+    });
+
+    // ---------- 13. PROGRESS BARS ANIMATION (about section) ----------
+    const progressFill = document.querySelectorAll(".progress-fill");
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.style.width = entry.target.style.width; // triggers transition
+          progressObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    progressFill.forEach(bar => progressObserver.observe(bar));
+
+    // ---------- 14. PARALLAX EFFECT FOR HERO GRID ----------
+    window.addEventListener("scroll", () => {
+      const scrollVal = window.scrollY;
+      const heroGrid = document.querySelector(".hero-bg-grid");
+      if(heroGrid) heroGrid.style.transform = `translateY(${scrollVal * 0.2}px)`;
+    });
+
+    // ---------- 15. FORM VALIDATION & SUBMISSION MESSAGE ----------
+    const form = document.querySelector("#advancedForm");
+    if(form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const msgBox = form.querySelector(".form-message");
+        msgBox.innerHTML = "⚓ Thank you! The Anchor Point team will reach out soon.";
+        msgBox.style.color = "#06B6D4";
+        form.reset();
+        setTimeout(() => { msgBox.innerHTML = ""; }, 3000);
+      });
+    }
+
+    // ---------- 16. FLOATING BACKGROUND SHAPES ANIMATION ----------
+    const shapes = document.querySelector(".floating-shapes");
+    if(shapes) {
+      setInterval(() => {
+        shapes.style.transform = `translate(${Math.sin(Date.now() / 3000) * 10}px, ${Math.cos(Date.now() / 4000) * 10}px)`;
+      }, 50);
+    }
+
+    // ---------- 17. LAZY LOADING (fallback for any data-src images, if needed) ----------
+    const lazyImages = document.querySelectorAll("img[data-src]");
+    if(lazyImages.length) {
+      const imageObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute("data-src");
+            obs.unobserve(img);
+          }
+        });
+      });
+      lazyImages.forEach(img => imageObserver.observe(img));
     }
   </script>
 </body>
